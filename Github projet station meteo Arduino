@@ -1,3 +1,8 @@
+                
+               //Bonjour,je souhaite avancer sur la lecture du code ci-dessous, merci de compléter à la suite des //
+               
+                
+
 const int m_time = 2;      //Mesure du temps en secondes
                            //variable qui ne peut être modifiée;
                            //en lecture seule
