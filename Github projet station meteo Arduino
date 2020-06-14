@@ -23,25 +23,25 @@ void loop()                //= Boucle qui se répète tant que le programme tour
 
   meassure();
 
-  Serial.print("Vitesse du vent: ");//= Affichage de la vitesse du vent
+  Serial.print("Vitesse du vent: ");//= Affichage de la vitesse du vent sur le moniteur
   Serial.print(wind);       
-  Serial.print(" km/h ");           //= Affichage de la vitesse en  Km/h
+  Serial.print(" km/h ");           //= Affichage de la vitesse en  Km/h sur le moniteur
   Serial.print(wind / 3.6); 
-  Serial.println(" m/s");           //= Affichage de la vitesse en m/s
+  Serial.println(" m/s");           //= Affichage de la vitesse en m/s   sur le moniteur
 
 }
 
-void countWind()                    //
+void countWind()                    //?
 {
-  wind_compteur ++;
+  wind_compteur ++;                //?
 }
 
 void meassure() 
 {
-  wind_compteur = 0;
-  time = millis();
-  attachInterrupt(1, countWind, RISING);
-  delay(1000 * m_time);
-  detachInterrupt(1);
-  wind = (float)wind_compteur / (float)m_time * 2.4;
+  wind_compteur = 0;                    //compteur du vent=0
+  time = millis();                      //temps en millisecondes
+  attachInterrupt(1, countWind, RISING);//?
+  delay(1000 * m_time);                 //?
+  detachInterrupt(1);                   //?
+  wind = (float)wind_compteur / (float)m_time * 2.4;//?
 }
