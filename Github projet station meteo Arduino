@@ -1,0 +1,47 @@
+const int m_time = 2;      //Mesure du temps en secondes
+                           //variable qui ne peut être modifiée;
+                           //en lecture seule
+                           //prend moins de place en mémoire qu'un "int"
+
+int wind_compteur = 0;     //0 = valeur du compteur au lancement du programme
+
+
+float wind = 0.0;          //0 = la valeur du vent au lancement du programme
+
+
+unsigned long time = 0;    //0 = la valeur du temps au lancement du programme
+
+
+void setup()               //= Utilisé une seule fois lors du démarrage du programme
+{
+  Serial.begin(9600);      //= Vitesse de transfert en baud
+  time = millis();         //= Temps en milliseconde
+}
+
+void loop()                //= Boucle qui se répète tant que le programme tourne
+{
+
+  meassure();
+
+  Serial.print("Vitesse du vent: ");//= Affichage de la vitesse du vent
+  Serial.print(wind);       
+  Serial.print(" km/h ");           //= Affichage de la vitesse en  Km/h
+  Serial.print(wind / 3.6); 
+  Serial.println(" m/s");           //= Affichage de la vitesse en m/s
+
+}
+
+void countWind()                    //
+{
+  wind_compteur ++;
+}
+
+void meassure() 
+{
+  wind_compteur = 0;
+  time = millis();
+  attachInterrupt(1, countWind, RISING);
+  delay(1000 * m_time);
+  detachInterrupt(1);
+  wind = (float)wind_compteur / (float)m_time * 2.4;
+}
